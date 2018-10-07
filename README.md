@@ -1,16 +1,8 @@
 [![Build Status](https://travis-ci.org/patrickvaler/es6-express-mongoose-starter.svg?branch=master)](https://travis-ci.org/patrickvaler/es6-express-mongoose-starter) [![Dependency Status](https://david-dm.org/patrickvaler/es6-express-mongoose-starter/status.svg?style=flat)](https://david-dm.org/patrickvaler/es6-express-mongoose-starter) [![GitHub version](https://badge.fury.io/gh/patrickvaler%2Fes6-express-mongoose-starter.svg)](https://badge.fury.io/gh/patrickvaler%2Fes6-express-mongoose-starter)
 
 
-# es6-express-mongoose-starter 
-This repo serves as an starter package written in JavaScript (ES6) for anyone looking to get up and running with Express and Mongoose fast. It contains a example REST API for fictious todos connected to MongoDB and uses [Mocha]("https://mochajs.org/")/[Chai]("http://chaijs.com/") for the unit tests.
-
-- Best practices in file and application organization
-- Ready to go build system for working with ES6
-- Uses [Eslint]("http://eslint.org/") for code linting
-- Example of REST API connected to MongoDB (by Mongoose)
-- Example unit tests created with [Mocha]("https://mochajs.org/")/[Chai]("http://chaijs.com/") and [Mockgoose]("https://github.com/mockgoose/mockgoose")
-
-## Getting Started
+# bidding-api 
+This repo serves as an application test for an API written in JavaScript (ES6), running with Express and Mongoose. It contains a REST API that connects to MongoDB and uses [Mocha]("https://mochajs.org/")/[Chai]("http://chaijs.com/") for the unit tests.
 
 ### Requirements
 - [Node.js]("https://nodejs.org/") >= 6.x
@@ -18,8 +10,8 @@ This repo serves as an starter package written in JavaScript (ES6) for anyone lo
 
 ### Clone project & install dependencies
 ```bash
-$ git clone git://github.com/patrickvaler/es6-express-mongoose-starter ./my-example-app
-$ cd my-example-app
+$ git clone https://github.com/omarjcamo/bidding-api ./my-example-api
+$ cd my-example-api
 
 $ yarn install
   OR
@@ -27,15 +19,13 @@ $ npm install
 ```
 
 ### Initialize MongoDB with data
-> The server tries to connect with `'mongodb://localhost:27017/es6-express-mongoose-starter'`, you can overwrite this default setting for each environment in `src/config/config.js`.
+> The server tries to connect with `'mongodb://localhost:27017/bidding-api'`, you can overwrite this default setting for each environment in `src/config/config.js`.
 
 Connect to your MongoDB instance and insert:
 ```bash
-$ use es6-express-mongoose-starter
-$ db.todos.insert([{ name: 'Book flight to Los Angeles' },
-                   { name: 'Reserve a table at a chinese restaurant' },
-                   { name: 'Buy birthday present for Tom' },
-                   { name: 'Book flight to Los Angeles' }]);
+$ use bidding-api
+$ db.items.insert([{ name: 'Piano Yamaha CK100', startingPrice: 1200 },
+                   { name: 'Motorbike Piaggio 125cc', startingPrice: 560  }]);
 ```
 
 ### Run backend
@@ -55,32 +45,34 @@ It should return the current version of the package.json file.
 ## Additional information
 ### <a name="availableRoutes">Available routes</a>
 
-**Get a list of Todos**
+**Get a list of Items**
 ```
-GET localhost:3000/api/v1/todo
+GET localhost:3000/api/v1/items
 ```
 
-**Add a Todo**
+**Add an Item**
 ```
-POST localhost:3000/api/v1/todo
+POST localhost:3000/api/v1/item
 
 Body: {
-    name: String
+    name: String,
+    startingPrice: Number
 }
 ```
 
-**Update a Todo**
+**Update an Item**
 ```
-PUT localhost:3000/api/v1/todo/:id
+PUT localhost:3000/api/v1/item/:id
 
 Body: {
-    name: String
+    name: String,
+    startingPrice: Number
 }
 ```
 
-**Delete a Todo**
+**Delete an Item**
 ```
-DELETE localhost:3000/api/v1/todo/:id
+DELETE localhost:3000/api/v1/item/:id
 ```
 
 ### Scripts
@@ -120,6 +112,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
----
-Made with ♥ by [Patrick Valer]("http://www.patrickvaler.ch") (<hello@patrickvaler.ch>)

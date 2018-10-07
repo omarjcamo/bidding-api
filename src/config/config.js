@@ -3,7 +3,7 @@
  * @type {{db: string, apiPort: number}}
  */
 const defaultConfig = {
-  db: 'mongodb://localhost:27017/red-camel',
+  db: 'mongodb://localhost:27017/bidding-api',
   apiPort: 3000
 };
 
